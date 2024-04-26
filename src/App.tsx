@@ -107,7 +107,14 @@ function TabContent({ item }: { item: IContent | undefined }) {
 
   // after clicking on the Undo in 2s button, it will call the handleUndo function 2000 ms later, it means the state would be reset 2 seconds later!
   const handleUndoLater = () => {
-    setTimeout(handleUndo, 2000);
+    // NOTE: this works well...
+    // NOTE: not forget that: when we have call back => this two paranthesis => we have to call the function with paranthesis too => handleUndo();, otherwise, function without paranthesis will not work! or just remove all four paranthesis, curly braces, arrow and semicolon and write only the name of the function like what i wrote at below as second option and it will work too!
+    setTimeout(() => {
+      handleUndo();
+    }, 2000);
+
+    // NOTE: this works well too...
+    // setTimeout(handleUndo, 2000);
   };
 
   return (
