@@ -79,7 +79,9 @@ function TabContent({ item }: { item: IContent | undefined }) {
   const [likes, setLikes] = useState(0);
 
   function handleInc() {
-    setLikes(likes + 1);
+    // setLikes(likes + 1);
+    // NOTE: without call back we will have the same result, and it works well, but when i repeat this function in below function for three times and then click on the +++ button to call this function, it will increase only 1 time, although i repeated it for three times. but when i add the call back to it, it will increase three time and when other three commands are there too and not commented out, it will increase it 6 times!
+    setLikes((likes) => likes + 1);
   }
   // const clonedArray = JSON.parse(JSON.stringify(nodesArray));
 
@@ -92,6 +94,10 @@ function TabContent({ item }: { item: IContent | undefined }) {
     // setLikes(() => likes + 1);
     // setLikes(() => likes + 1);
     // setLikes(() => likes + 1);
+
+    // handleInc();
+    // handleInc();
+    // handleInc();
   }
 
   const handleUndo = () => {
