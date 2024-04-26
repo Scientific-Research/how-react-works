@@ -105,6 +105,11 @@ function TabContent({ item }: { item: IContent | undefined }) {
     setLikes(0);
   };
 
+  // after clicking on the Undo in 2s button, it will call the handleUndo function 2000 ms later, it means the state would be reset 2 seconds later!
+  const handleUndoLater = () => {
+    setTimeout(handleUndo, 2000);
+  };
+
   return (
     <div className="tab-content">
       <h4>{item?.summary}</h4>
@@ -124,7 +129,7 @@ function TabContent({ item }: { item: IContent | undefined }) {
 
       <div className="tab-undo">
         <button onClick={handleUndo}>Undo</button>
-        <button>Undo in 2s</button>
+        <button onClick={handleUndoLater}>Undo in 2s</button>
       </div>
     </div>
   );
